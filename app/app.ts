@@ -19,7 +19,8 @@ function startGame() {
   // 7 enable the strictNullCheck on compiler and check errors
   // 8 add undefined as union type for playerName
 
-  postScore(100, playerName);
+  // postScore(80); // Tye without playerName parameter to check the result on the page
+  postScore(80, playerName);
 }
 
 
@@ -38,7 +39,7 @@ function getInputValue(elementID: string) : string | undefined {
   }
 }
 
-function postScore(score: number, playerName?: string): void {
+function postScore(score: number, playerName: string = 'Multimath Player'): void {
   const scoreElement: HTMLElement | null = document.getElementById('postedScores');
   scoreElement!.innerText = `${score} - ${playerName}`; // notice the non null assertion to assert that the scoreElement won't be null
 }
