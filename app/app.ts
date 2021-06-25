@@ -1,7 +1,7 @@
 function startGame() {
   // starting a new game
 
-  let playerName: string = 'Audrey';
+  let playerName: string | undefined = getInputValue('playername'); // getting name from input
   // playerName = 10;
   // playerName = true;
   // const playerName = 'Audrey';
@@ -19,13 +19,28 @@ function startGame() {
   // 7 enable the strictNullCheck on compiler and check errors
   // 8 add undefined as union type for playerName
 
-  var messagesElement = document.getElementById('messages');
-  messagesElement!.innerText = 'Welcome to MultiMath! Starting new game...';
+  postScore(100, playerName);
 }
 
 
-function logPlayer(name: string):void {
+function logPlayer(name: string = 'Multimath Player'):void {
   console.log(`New game starting for player: ${name}`); // Comment on interpolation
+}
+
+// retrieve user input values
+function getInputValue(elementID: string) : string | undefined {
+  const inputElement: HTMLInputElement = <HTMLInputElement>document.getElementById(elementID);
+
+  if(inputElement.value === '') {
+    return undefined;
+  } else {
+    return inputElement.value;
+  }
+}
+
+function postScore(score: number, playerName?: string): void {
+  const scoreElement: HTMLElement | null = document.getElementById('postedScores');
+  scoreElement!.innerText = `${score} - ${playerName}`; // notice the non null assertion to assert that the scoreElement won't be null
 }
 
 document.getElementById('startGame')!.addEventListener('click', startGame);
