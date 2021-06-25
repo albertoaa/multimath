@@ -24,7 +24,7 @@ function startGame() {
 }
 
 
-function logPlayer(name) {
+function logPlayer(name: string) {
   console.log(`New game starting for player: ${name}`); // Comment on interpolation
 }
 
