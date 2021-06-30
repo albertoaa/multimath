@@ -1,7 +1,7 @@
 function startGame() {
   // starting a new game
 
-  let playerName: string | undefined = getInputValue("playername"); // getting name from input
+  let playerName: string | undefined = getInputValue('playername'); // getting name from input
   // playerName = 10;
   // playerName = true;
   // const playerName = 'Audrey';
@@ -24,7 +24,7 @@ function startGame() {
   postScore(-5, playerName); // added to show the logger function call to error
 }
 
-function logPlayer(name: string = "Multimath Player"): void {
+function logPlayer(name: string = 'Multimath Player'): void {
   console.log(`New game starting for player: ${name}`); // Comment on interpolation
 }
 
@@ -34,7 +34,7 @@ function getInputValue(elementID: string): string | undefined {
     document.getElementById(elementID)
   );
 
-  if (inputElement.value === "") {
+  if (inputElement.value === '') {
     return undefined;
   } else {
     return inputElement.value;
@@ -43,7 +43,7 @@ function getInputValue(elementID: string): string | undefined {
 
 function postScore(
   score: number,
-  playerName: string = "Multimath Player"
+  playerName: string = 'Multimath Player'
 ): void {
   let logger: (value: string) => void; // assigning function type to variable
 
@@ -54,13 +54,13 @@ function postScore(
   }
 
   const scoreElement: HTMLElement | null =
-    document.getElementById("postedScores");
+    document.getElementById('postedScores');
   scoreElement!.innerText = `${score} - ${playerName}`; // notice the non null assertion to assert that the scoreElement won't be null
 
   logger(`Score: ${score}`);
 }
 
-document.getElementById("startGame")!.addEventListener("click", startGame);
+document.getElementById('startGame')!.addEventListener('click', startGame);
 
 // function logMessage(message: string): void {
 //   console.log(message);
@@ -72,3 +72,17 @@ const logMessage = (message: string): void => console.log(message);
 function logError(err: string): void {
   console.error(err);
 }
+
+// let myResult: Result = {}; uncomment to demonstrate compiler error on interface assignment
+let myResult: Result = {
+  playerName: 'Marie',
+  score: 5,
+  problemCount: 5,
+  factor: 7,
+};
+
+// let player: Person = {} uncomment to demonstrate compiler error on interface assignment
+let player: Person = {
+  name: 'Daniel',
+  formatName: () => 'Dan',
+};
