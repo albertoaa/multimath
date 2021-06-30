@@ -21,6 +21,7 @@ function startGame() {
 
   // postScore(80); // Tye without playerName parameter to check the result on the page
   postScore(80, playerName);
+  postScore(-5, playerName); // added to show the logger function call to error
 }
 
 function logPlayer(name: string = "Multimath Player"): void {
@@ -44,9 +45,19 @@ function postScore(
   score: number,
   playerName: string = "Multimath Player"
 ): void {
+  let logger: (value: string) => void; // assigning function type to variable
+
+  if (score < 0) {
+    logger = logError;
+  } else {
+    logger = logMessage;
+  }
+
   const scoreElement: HTMLElement | null =
     document.getElementById("postedScores");
   scoreElement!.innerText = `${score} - ${playerName}`; // notice the non null assertion to assert that the scoreElement won't be null
+
+  logger(`Score: ${score}`);
 }
 
 document.getElementById("startGame")!.addEventListener("click", startGame);
@@ -55,6 +66,9 @@ document.getElementById("startGame")!.addEventListener("click", startGame);
 //   console.log(message);
 // }
 
+// functions has a type that is the combinations of all parameters types and the return value type
 const logMessage = (message: string): void => console.log(message);
 
-logMessage('Welcome to Multimath');
+function logError(err: string): void {
+  console.error(err);
+}
