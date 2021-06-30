@@ -74,15 +74,19 @@ function logError(err: string): void {
 }
 
 // let myResult: Result = {}; uncomment to demonstrate compiler error on interface assignment
-let myResult: Result = {
-  playerName: 'Marie',
-  score: 5,
-  problemCount: 5,
-  factor: 7,
-};
+// let myResult: Result = {
+//   playerName: 'Marie',
+//   score: 5,
+//   problemCount: 5,
+//   factor: 7,
+// };
 
 // let player: Person = {} uncomment to demonstrate compiler error on interface assignment
-let player: Person = {
-  name: 'Daniel',
-  formatName: () => 'Dan',
-};
+// let player: Person = {
+//   name: 'Daniel',
+//   formatName: () => 'Dan',
+// };
+
+const firstPlayer: Player = new Player();
+firstPlayer.name = 'Lanier';
+console.log(firstPlayer.formatName());
