@@ -1,3 +1,5 @@
+/// <reference path="./models/player.ts" />
+
 function startGame() {
   // starting a new game
 
